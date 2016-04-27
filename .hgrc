@@ -1,0 +1,47 @@
+[ui]
+username = blaurent
+
+[extensions]
+color =
+graphlog =
+progress =
+hgext.convert =
+hgext.extdiff =
+strip =
+rebase =
+pager =
+largefiles =
+
+# Provide the 'purge' command to remove untracked files.
+purge =
+
+# Files > 10 M are automatically stored as large files.
+[largefiles]
+minsize = 10
+
+# Use a pager for long hg command output.
+[pager]
+pager = LESS=FRSXQ less
+attend = outgoing,diff,status,log,qdiff,blame,annotate,pdiff,glog,show,ls
+
+[color]
+status.modified = cyan
+
+[merge-tools]
+filemerge.executable = /Users/benoist/.local/bin/opendiff-w
+filemerge.args = $local $other -ancestor $base -merge $output
+
+[extdiff]
+cmd.opendiff = opendiff-w
+
+[progress]
+delay = 1.5
+
+[alias]
+ls = log --template '\033[0;33m{rev}\033[0m ({tags}) {date|shortdate} \033[0;35m{branch}\033[0m \033[0;36m{author|user}\033[0m {desc|firstline}\n'
+slog = log --style=/Users/benoist/.hg/map-cmdline.slog
+sglog = glog --style=/Users/benoist/.hg/map-cmdline.sglog
+blog = !hg log -b `hg branch`
+btip = !hg log -b `hg branch` -l 1
+ciam = commit -m
+

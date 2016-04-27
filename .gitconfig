@@ -1,0 +1,41 @@
+[user]
+    name = Benoist LAURENT
+    email = benoist.laurent@gmail.com
+
+[push]
+    default = simple
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[alias]
+    st = status -s
+    ci = commit
+    ciam = commit -am
+    co = checkout
+    cob = checkout -b
+    undo = reset --hard HEAD
+    branches = branch --list --all
+    opendiff = difftool --tool=opendiff -Y
+    incoming = "!git remote update -p; git log ..@{u}"
+    outgoing = "!CB=$(git rev-parse --abbrev-ref HEAD) && git fetch origin && git log origin/$CB..$CB"
+   
+    # Shows colored log with tag/branch, short description and author.
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ls10 =  log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate -10
+
+    # Same as above but also shows date.
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+    # Shows colored log with tag/branch, short description and author and mofied file list.
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+[merge]
+    tool = opendiff
