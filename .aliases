@@ -23,14 +23,12 @@ alias l1='l -1'
 alias llx='ll -X'
 alias lcrt='ll -crt'
 
-
 # `cat` with beautiful colors. requires: sudo easy_install -U Pygments
 alias c='pygmentize -O style=monokai -f console256 -g'
 
 # grep aliases.
 alias grep='grep -n --color'
 alias egrep='egrep --color'
-
 
 # Application aliases.
 alias R='R --vanilla'

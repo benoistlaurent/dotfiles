@@ -16,6 +16,8 @@ else
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         doIt;
+    else
+        echo "Abort"
     fi;
 fi;
 unset doIt;
