@@ -1,0 +1,24 @@
+
+# vim as default
+export EDITOR="vim"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+# LS_COLORS
+eval "$(dircolors -b ~/.dircolors)"
+
+# Use GNU core utils.
+export PATH=$HOME/.local/gnutools/bin:$PATH
+export MANPATH=$HOME/.local/gnutools/share/man:$MANPATH
+
+# Use locally installed packages.
+export PATH=$HOME/.local/bin:$PATH
+
+# Prefer US English and use UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
