@@ -42,7 +42,7 @@ alias vmd='vmd -size 1000 1000 -nt'
 # Other aliases.
 alias du1='du -hd1'
 alias umount='diskutil eject'
-
+alias zshconfig='$EDITOR ~/.zshrc'
 
 # Enable modules.
 alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/bash'
