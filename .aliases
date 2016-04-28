@@ -43,3 +43,12 @@ alias zshconfig='$EDITOR ~/.zshrc'
 alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/bash'
 alias loadmodulelocal='source /Volumes/apollo/software/Modules/3.2.10/init/bash'
 
+# git aliases.
+alias g='git'
+alias gci='git commit'
+alias gciam='git commit -am'
+alias gst='git status -s'
+alias gamm='git commit --amend'
+alias gforgot='git commit -a --amend -C HEAD'
+alias gadd='git add'
+alias gls='git ls'  # ls defined in $HOME/.gitconfig
