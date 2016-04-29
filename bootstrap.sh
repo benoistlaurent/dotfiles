@@ -41,11 +41,14 @@ if [ ! -n "$DOTFILES" ]; then
     fi
 fi
 
-# Notice title
+# Notice message
 notice() { echo -e "$BOLD$GREEN=> $1$COLOR_OFF"; }
 
-# Error title
+# Error message
 error() { echo -e "$RED=> Error: $1$COLOR_OFF"; }
+
+# Warning message
+warning() { echo -e "$YELLOW=> Warning: $1$COLOR_OFF"; }
 
 # List item
 c_list() { echo -e "  $BOLD$GREEN ✔$COLOR_OFF $1"; }
@@ -157,6 +160,12 @@ get_dotfiles() {
         notice "Updating repositories"
         pushd $DOTFILES > /dev/null
         git pull origin master
+        if [ "$?" != 0 ]; then
+            warning "Cannot update repository"
+        else
+            git submodule init
+            git submodule update
+        fi
         git submodule init
         git submodule update
         popd > /dev/null
