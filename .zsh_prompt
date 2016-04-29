@@ -1,0 +1,59 @@
+# This prompt is inspired by oh-my-zsh dst theme and customized to me.
+
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+YELLOW="$(tput setaf 3)"
+BLUE="$(tput setaf 4)"
+CYAN="$(tput setaf 37)"
+MAGENTA="$(tput setaf 5)"
+ORANGE="$(tput setaf 172)"
+PURPLE="$(tput setaf 141)"
+BOLD="$(tput bold)"
+COLOR_OFF="$(tput sgr0)"
+
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" on${PURPLE} "
+ZSH_THEME_GIT_PROMPT_SUFFIX="${COLOR_OFF}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" ${BOLD}${RED}✖${COLOR_OFF}"
+ZSH_THEME_GIT_PROMPT_CLEAN=" ${BOLD}${GREEN}✔${COLOR_OFF}"
+
+function set_prompt() {
+    
+    function __prompt_char {
+        if [ $UID -eq 0 ]; then 
+            echo "${RED}#${COLOR_OFF}";
+        else
+            echo $;
+        fi
+    }
+
+    function __usernamehost() {
+        if [[ "${USER}" == *"root" ]]; then
+            userStyle="${RED}";
+        else
+            userStyle="${CYAN}";
+        fi;
+
+        userhost=""
+        userhost+="${userStyle}$USER"
+        userhost+="${COLOR_OFF}@"
+        userhost+="${ORANGE}$(hostname -s)"
+        userhost+="${COLOR_OFF}:"
+        echo $userhost
+    }
+
+    PROMPT="$(__usernamehost)"
+    PROMPT+="${BOLD}${BLUE}%~${COLOR_OFF}"
+    PROMPT+="\$(git_prompt_info)"
+    PROMPT+="
+\$(__prompt_char) "
+    export PROMPT
+}
+
+set_prompt
+unset set_prompt
+
+# PROMPT=%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info)
+# %_ $(__prompt_char) '
+
+# RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'

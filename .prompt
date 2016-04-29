@@ -1,0 +1,6 @@
+
+if [[ -n "$ZSH_VERSION" ]]; then  # setup zsh prompt
+    [ -f $HOME/.zsh_prompt ] && source $HOME/.zsh_prompt
+else
+    [ -f $HOME/.bash_prompt ] && source $HOME/.bash_prompt
+fi

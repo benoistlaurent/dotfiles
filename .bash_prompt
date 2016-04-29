@@ -1,102 +1,109 @@
-# This prompt is inspired by paulirish but customized to me.
-
-if [[ -n "$ZSH_VERSION" ]]; then  # quit now if in zsh
-    return 1 2> /dev/null || exit 1;
-fi;
-
-# Use colors, but only if connected to a terminal, and that terminal
-# supports them.
-if which tput >/dev/null 2>&1; then
-    ncolors=$(tput colors)
-fi
-if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
-    RED="$(tput setaf 1)"
-    GREEN="$(tput setaf 2)"
-    YELLOW="$(tput setaf 3)"
-    BLUE="$(tput setaf 4)"
-    CYAN="$(tput setaf 37)"
-    MAGENTA="$(tput setaf 5)"
-    ORANGE="$(tput setaf 172)"
-    WHITE="$(tput setaf 8)"
-    PURPLE="$(tput setaf 141)"
-    BOLD="$(tput bold)"
-    COLOR_OFF="$(tput sgr0)"
-else
-    RED=""
-    GREEN=""
-    YELLOW=""
-    BLUE=""
-    CYAN=""
-    MAGENTA=""
-    ORANGE=""
-    WHITE=""
-    PURPLE=""
-    BOLD=""
-    COLOR_OFF=""
-fi
+# This prompt is inspired by paulirish and customized to me.
 
 
-function usernamehost() {
-    if [[ "${USER}" == *"root" ]]; then
-        userStyle="${RED}";
+function set_prompt() {
+
+    # Use colors only if connected to a terminal, and that terminal
+    # supports them.
+    if which tput >/dev/null 2>&1; then
+        ncolors=$(tput colors)
+    fi
+    if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
+        RED="$(tput setaf 1)"
+        GREEN="$(tput setaf 2)"
+        YELLOW="$(tput setaf 3)"
+        BLUE="$(tput setaf 4)"
+        CYAN="$(tput setaf 37)"
+        MAGENTA="$(tput setaf 5)"
+        ORANGE="$(tput setaf 172)"
+        PURPLE="$(tput setaf 141)"
+        BOLD="$(tput bold)"
+        COLOR_OFF="$(tput sgr0)"
     else
-        userStyle="${MAGENTA}";
-    fi;
-
-    userhost=""
-    userhost+="${userStyle}$USER"
-    userhost+="${COLOR_OFF}@"
-    userhost+="${ORANGE}$(hostname -s)"
-    userhost+="${COLOR_OFF}:"
-    echo $userhost
-}
-
-
-# PS1 for version control systems.
-#
-# Args:
-#     branchname: name of the current branch
-#     status: 0 is clean, 2 is repo barely initialized, anything else is any
-#             type of modification.
-#
-function __prompt_vcs() {
-    branchname=$1
-    status=$2
-
-    if [ "$status" == "1" ]; then
-        status="${BOLD}${GREEN}✔${COLOR_OFF}"
-    elif [ "$status" == "2" ]; then
-        status="${BOLD}${YELLOW}●${COLOR_OFF}"
-    else
-        status="${BOLD}${RED}✖${COLOR_OFF}"
+        RED=""
+        GREEN=""
+        YELLOW=""
+        BLUE=""
+        CYAN=""
+        MAGENTA=""
+        ORANGE=""
+        PURPLE=""
+        BOLD=""
+        COLOR_OFF=""
     fi
 
-    echo " on ${PURPLE}${branchname} ${status}"
-    return    
+    function __prompt_char {
+        if [ $UID -eq 0 ]; then 
+            echo "${RED}#${COLOR_OFF}";
+        else
+            echo "$";
+        fi
+    }
+
+    function __usernamehost() {
+        if [ $UID -eq 0 ]; then
+            userStyle="${RED}";
+        else
+            userStyle="${CYAN}";
+        fi;
+
+        userhost=""
+        userhost+="${userStyle}$USER"
+        userhost+="${COLOR_OFF}@"
+        userhost+="${ORANGE}$(hostname -s)"
+        userhost+="${COLOR_OFF}:"
+        echo $userhost
+    }
+
+
+    # PS1 for version control systems.
+    #
+    # Args:
+    #     branchname: name of the current branch
+    #     status: 0 is clean, 2 is repo barely initialized, anything else is any
+    #             type of modification.
+    #
+    function __prompt_vcs() {
+        branchname=$1
+        status=$2
+
+        if [ "$status" == "1" ]; then
+            status="${BOLD}${GREEN}✔${COLOR_OFF}"
+        elif [ "$status" == "2" ]; then
+            status="${BOLD}${YELLOW}●${COLOR_OFF}"
+        else
+            status="${BOLD}${RED}✖${COLOR_OFF}"
+        fi
+
+        echo " on ${PURPLE}${branchname} ${status}"
+        return    
+    }
+
+    function __prompt_git() {
+        git rev-parse --is-inside-work-tree &>/dev/null || return
+        local short
+        short=$(git rev-parse --short HEAD &> /dev/null)
+        rev_parse_exit_code="$?"
+
+        if [ $rev_parse_exit_code != "0" ]; then
+            branchname="?"
+            status="2"
+        else
+            branchname=$(git describe --contains --all HEAD)
+            [[ -n $(git status -s) ]]
+            status="$?"
+        fi
+
+        __prompt_vcs $branchname $status
+        return
+    }
+
+    PS1="$(__usernamehost)"
+    PS1+="$BOLD$BLUE\w$COLOR_OFF"
+    PS1+="\$(__prompt_git)"
+    PS1+="\n\$(__prompt_char) "
+    export PS1
 }
 
-function __prompt_git() {
-    git rev-parse --is-inside-work-tree &>/dev/null || return
-    local short
-    short=$(git rev-parse --short HEAD &> /dev/null)
-    rev_parse_exit_code="$?"
-
-    if [ $rev_parse_exit_code != "0" ]; then
-        branchname="?"
-        status="2"
-    else
-        branchname=$(git describe --contains --all HEAD)
-        [[ -n $(git status -s) ]]
-        status="$?"
-    fi
-
-    __prompt_vcs $branchname $status
-    return
-}
-
-PS1="$(usernamehost)"
-PS1+="$BOLD$BLUE\w$COLOR_OFF"
-PS1+="\$(__prompt_git)"
-PS1+="\n$ "
-export PS1
-
+set_prompt
+unset set_prompt
