@@ -2,11 +2,12 @@
 
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
+GREEN2="$(tput setaf 118)"
 YELLOW="$(tput setaf 3)"
 BLUE="$(tput setaf 4)"
 CYAN="$(tput setaf 39)"
 MAGENTA="$(tput setaf 5)"
-ORANGE="$(tput setaf 172)"
+ORANGE="$(tput setaf 214)"
 PURPLE="$(tput setaf 141)"
 BOLD="$(tput bold)"
 COLOR_OFF="$(tput sgr0)"
@@ -31,7 +32,7 @@ function set_prompt() {
         if [ $UID -eq 0 ]; then
             userStyle="${RED}";
         else
-            userStyle="${CYAN}";
+            userStyle="${GREEN2}";
         fi;
 
         userhost=""
@@ -43,7 +44,7 @@ function set_prompt() {
     }
 
     PROMPT="$(__usernamehost)"
-    PROMPT+="${BOLD}${BLUE}%~${COLOR_OFF}"
+    PROMPT+="${CYAN}%~${COLOR_OFF}"
     PROMPT+="\$(git_prompt_info)"
     PROMPT+="
 \$(__prompt_char) "
