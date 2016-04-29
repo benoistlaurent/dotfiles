@@ -5,6 +5,9 @@
 [push]
     default = simple
 
+[core]
+    pager = LESS=FRSXQ less
+
 [color]
     branch = auto
     diff = auto

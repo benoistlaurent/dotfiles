@@ -60,7 +60,7 @@ fi
 # git aliases.
 alias g='git'
 alias gci='git commit'
-alias gci='git commit -m'
+alias gcim='git commit -m'
 alias gciam='git commit -am'
 alias gst='git status -s'
 alias gamm='git commit --amend'
