@@ -39,3 +39,15 @@
 
 [merge]
     tool = opendiff
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "https://github.com/"
+  pushInsteadOf = "http://github.com/"
+  pushInsteadOf = "git://github.com/"
+
+[url "git@bitbucket.org:"]
+    insteadOf = "bb:"
+    pushInsteadOf = "https://bitbucket.org/"
+    pushInsteadOf = "http://bitbucket.org/"
+    pushInsteadOf = "git://bitbucket.org/"
