@@ -1,5 +1,6 @@
-# Load our dotfiles like ~/.bash_prompt, etc…
-for file in ~/.{paths,prompt,exports,aliases,functions}; do
+# Load our dotfiles like ~/.bash_prompt, etc...
+# Untracked setting should be put in $HOME/.extra
+for file in ~/.{extra,paths,prompt,exports,aliases,functions}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
