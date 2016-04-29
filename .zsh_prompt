@@ -4,7 +4,7 @@ RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
 YELLOW="$(tput setaf 3)"
 BLUE="$(tput setaf 4)"
-CYAN="$(tput setaf 37)"
+CYAN="$(tput setaf 39)"
 MAGENTA="$(tput setaf 5)"
 ORANGE="$(tput setaf 172)"
 PURPLE="$(tput setaf 141)"
@@ -20,7 +20,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" ${BOLD}${GREEN}✔${COLOR_OFF}"
 function set_prompt() {
     
     function __prompt_char {
-        if [ $UID -eq 0 ]; then 
+        if [ $UID -eq 0 ]; then
             echo "${RED}#${COLOR_OFF}";
         else
             echo $;
@@ -28,7 +28,7 @@ function set_prompt() {
     }
 
     function __usernamehost() {
-        if [[ "${USER}" == *"root" ]]; then
+        if [ $UID -eq 0 ]; then
             userStyle="${RED}";
         else
             userStyle="${CYAN}";
