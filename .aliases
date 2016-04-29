@@ -29,19 +29,33 @@ alias egrep='egrep --color'
 
 # Application aliases.
 alias R='R --vanilla'
-alias rstud='open -a RStudio'
-alias skim='open -a Skim'
 alias vmdtext='vmd -dispdev text'
 alias vmd='vmd -size 1000 1000 -nt'
 
-# Other aliases.
-alias du1='du -hd1'
-alias umount='diskutil eject'
-alias zshconfig='$EDITOR ~/.zshrc'
 
-# Enable modules.
-alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/bash'
-alias loadmodulelocal='source /Volumes/apollo/software/Modules/3.2.10/init/bash'
+# zsh specific aliases.
+if [[ -n "$ZSH_VERSION" ]]; then
+    alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/zsh'
+    alias loadmodulelocal='source /Volumes/apollo/software/Modules/3.2.10/init/zsh'
+    alias zshconfig='$EDITOR ~/.zshrc'
+
+# Any other terminal than zsh aliases.
+else
+    alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/bash'
+    alias loadmodulelocal='source /Volumes/apollo/software/Modules/3.2.10/init/bash'
+    alias bashconfig='$EDITOR ~/.bashrc'
+fi;
+
+# OS X specific aliases.
+if [[ 'Darwin' =~ `uname -s` ]]; then
+    alias du1='du -hd1'
+    alias umount='diskutil eject'
+    alias rstud='open -a RStudio'
+    alias skim='open -a Skim's
+# Linux specific aliases.
+else
+    alias du1='du -h --max-depth=1'
+fi
 
 # git aliases.
 alias g='git'
@@ -52,3 +66,4 @@ alias gamm='git commit --amend'
 alias gforgot='git commit -a --amend -C HEAD'
 alias gadd='git add'
 alias gls='git ls'  # ls defined in $HOME/.gitconfig
+alias god='git opendiff'
