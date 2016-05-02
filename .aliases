@@ -51,7 +51,7 @@ if [[ 'Darwin' =~ `uname -s` ]]; then
     alias du1='du -hd1'
     alias umount='diskutil eject'
     alias rstud='open -a RStudio'
-    alias skim='open -a Skim's
+    alias skim='open -a Skim'
 # Linux specific aliases.
 else
     alias du1='du -h --max-depth=1'
