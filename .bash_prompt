@@ -11,17 +11,19 @@ function set_prompt() {
     if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
         RED="$(tput setaf 1)"
         GREEN="$(tput setaf 2)"
+        GREEN2="$(tput setaf 118)"
         YELLOW="$(tput setaf 3)"
         BLUE="$(tput setaf 4)"
         CYAN="$(tput setaf 37)"
         MAGENTA="$(tput setaf 5)"
-        ORANGE="$(tput setaf 172)"
+        ORANGE="$(tput setaf 214)"
         PURPLE="$(tput setaf 141)"
         BOLD="$(tput bold)"
         COLOR_OFF="$(tput sgr0)"
     else
         RED=""
         GREEN=""
+        GREEN2=""
         YELLOW=""
         BLUE=""
         CYAN=""
@@ -44,7 +46,7 @@ function set_prompt() {
         if [ $UID -eq 0 ]; then
             userStyle="${RED}";
         else
-            userStyle="${CYAN}";
+            userStyle="${GREEN2}";
         fi;
 
         userhost=""
