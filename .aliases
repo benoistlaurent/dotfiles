@@ -72,4 +72,4 @@ alias gpull='git pull'
 alias gpush='git push'
 alias ginit='git init'
 alias gclone='git clone'
-
+alias gco='git checkout'
