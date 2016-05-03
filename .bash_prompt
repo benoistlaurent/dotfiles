@@ -14,7 +14,7 @@ function set_prompt() {
         GREEN2="$(tput setaf 118)"
         YELLOW="$(tput setaf 3)"
         BLUE="$(tput setaf 4)"
-        CYAN="$(tput setaf 37)"
+        CYAN="$(tput setaf 39)"
         MAGENTA="$(tput setaf 5)"
         ORANGE="$(tput setaf 214)"
         PURPLE="$(tput setaf 141)"
@@ -101,7 +101,7 @@ function set_prompt() {
     }
 
     PS1="$(__usernamehost)"
-    PS1+="$BOLD$BLUE\w$COLOR_OFF"
+    PS1+="$CYAN\w$COLOR_OFF"
     PS1+="\$(__prompt_git)"
     PS1+="\n\$(__prompt_char) "
     export PS1
