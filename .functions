@@ -1,0 +1,15 @@
+
+# Move files/directories to trash.
+function trash() {
+    [[ $# -lt 1 ]] && echo "usage: trash SOURCE..." && return
+
+    [[ -n $TRASH ]] && TRASH=$TRASH
+    [[ -z $TRASH ]] && [[ -d $HOME/.Trash ]] && TRASH=$HOME/.Trash
+    [[ -z $TRASH ]] && [[ -d $HOME/.local/share/Trash ]] && TRASH=$HOME/.local/share/Trash
+
+    # No trash found: create one.
+    [[ -z $TRASH ]] && TRASH=$HOME/.Trash && mkdir $TRASH
+
+    mv -b $* $TRASH    
+}
+
