@@ -67,6 +67,7 @@ alias gamm='git commit --amend'
 alias gforgot='git commit -a --amend -C HEAD'
 alias gadd='git add'
 alias gls='git ls'  # ls defined in $HOME/.gitconfig
+alias gl='git log --oneline'
 alias god='git opendiff'
 alias gpull='git pull'
 alias gpush='git push'
