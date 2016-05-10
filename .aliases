@@ -32,20 +32,6 @@ alias R='R --vanilla'
 alias vmdtext='vmd -dispdev text'
 alias vmd='vmd -size 1000 1000 -nt'
 
-
-# zsh specific aliases.
-if [[ -n "$ZSH_VERSION" ]]; then
-    alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/zsh'
-    alias loadmodulelocal='source /Volumes/apollo/software/Modules/3.2.10/init/zsh'
-    alias zshconfig='$EDITOR ~/.zshrc'
-
-# Any other terminal than zsh aliases.
-else
-    alias loadmodule='source /ibpc/osx/lbt/Modules/3.2.9/init/bash'
-    alias loadmodulelocal='source /Volumes/apollo/software/Modules/3.2.10/init/bash'
-    alias bashconfig='$EDITOR ~/.bashrc'
-fi;
-
 # OS X specific aliases.
 if [[ 'Darwin' =~ `uname -s` ]]; then
     alias du1='du -hd1'
@@ -55,6 +41,15 @@ if [[ 'Darwin' =~ `uname -s` ]]; then
 # Linux specific aliases.
 else
     alias du1='du -h --max-depth=1'
+fi
+
+# zsh specific aliases.
+if [[ -n "$ZSH_VERSION" ]]; then
+    alias zshconfig='$EDITOR ~/.zshrc'
+
+# Any other terminal than zsh aliases.
+else
+    alias bashconfig='$EDITOR ~/.bashrc'
 fi
 
 # git aliases.
