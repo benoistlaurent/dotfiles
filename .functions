@@ -13,3 +13,10 @@ function trash() {
     mv -b $* $TRASH    
 }
 
+# Create a gziped tarball of a directory
+function mktar() {
+    [[ $# -ne 1 ]] && echo "usage: mktar SOURCE" && return
+    local bname=$(basename $1)
+    local tarname="$bname.tar.gz"
+    COPYFILE_DISABLE=1 tar cvzf $tarname -C $(dirname $1) $bname
+}
