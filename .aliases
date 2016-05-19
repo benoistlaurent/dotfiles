@@ -61,6 +61,7 @@ alias gst='git status -s'
 alias gamm='git commit --amend'
 alias gforgot='git commit -a --amend -C HEAD'
 alias gadd='git add'
+alias grm='git rm'
 alias gls='git ls'  # ls defined in $HOME/.gitconfig
 alias gl='git log --oneline'
 alias god='git opendiff'
