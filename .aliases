@@ -34,6 +34,8 @@ alias vmd='vmd -size 1000 1000 -nt'
 
 # OS X specific aliases.
 if [[ 'Darwin' =~ `uname -s` ]]; then
+    alias hidedt='defaults write com.apple.finder CreateDesktop false; killall Finder'
+    alias showdt='defaults write com.apple.finder CreateDesktop true; killall Finder'
     alias du1='du -hd1'
     alias umount='diskutil eject'
     alias rstud='open -a RStudio'
