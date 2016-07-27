@@ -36,7 +36,7 @@ function set_prompt() {
 
     function __prompt_char {
         if [ $UID -eq 0 ]; then 
-            echo "${RED}#${COLOR_OFF}";
+            echo "!#";
         else
             echo "$";
         fi
