@@ -21,6 +21,7 @@
 [alias]
     st = status -s
     ci = commit
+    cia = commit -a
     ciam = commit -am
     co = checkout
     cob = checkout -b
