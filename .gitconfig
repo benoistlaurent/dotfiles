@@ -32,19 +32,10 @@
     outgoing = "!CB=$(git rev-parse --abbrev-ref HEAD) && git fetch origin && git log origin/$CB..$CB"
    
     # Shows colored log with tag/branch, short description and author.
-    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s" --decorate
+    ls = log --pretty=format:\"%C(yellow)%h%C(reset) %cd %C(cyan)%cn%C(reset) %s %C(green)%d%C(reset)\" --date=short
     
-    # Same as ls - Shows last 10 commits.
-    loghead =  log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s" --decorate -10
-
     # Same as ls - Shows last commit.
-    head = log --pretty=format:"%C(yellow)%h\\ %Creset%s" --decorate HEAD^..HEAD
-
-    # Same as ls - Show date.
-    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s" --decorate --date=short
-
-    # Shows colored log with tag/branch, short description and author and mofied file list.
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    head = !git ls HEAD^..HEAD
 
 [merge]
     tool = opendiff
