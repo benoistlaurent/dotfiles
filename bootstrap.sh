@@ -176,7 +176,7 @@ main() {
 
     # Initialize.
     backupdir="$HOME/.dotfiles-backup/$(date "+%Y-%m-%d-%H%M.%S")"
-    dependencies=(git pygmentize)
+    dependencies=(git)
     excluded=(.git .gitignore .gitmodules bootstrap.sh Molotov.itermcolors README.rst)
 
     # Dependencies.

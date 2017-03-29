@@ -23,9 +23,6 @@ alias lcrt='ll -crt'
 # When using tree, group directories first
 alias tree='tree --dirsfirst'
 
-# `cat` with beautiful colors. requires: sudo easy_install -U Pygments
-alias c='pygmentize -O style=monokai -f console256 -g'
-
 # grep aliases.
 alias grep='grep -n --color'
 alias egrep='egrep --color'
