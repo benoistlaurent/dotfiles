@@ -39,3 +39,12 @@ function mktarz() {
     [[ $# -ne 1 ]] && echo "usage: mktarz SOURCE" && return 1
     __mktar $1 true
 }
+
+# Create a directory which name is prefixed by the date.
+function mkdate() {
+    [[ $# -ne 1 ]] && echo "usage: mkdate SUFFIX" && return 1
+    local thedate=`date +%y%m%d`
+    echo "${thedate}_$1"
+    mkdir ${thedate}_$1
+}
+
