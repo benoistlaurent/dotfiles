@@ -24,7 +24,7 @@ alias lcrt='ll -crt'
 alias tree='tree --dirsfirst'
 
 # grep aliases.
-alias grep='grep -n --color'
+alias grep='grep --color'
 alias egrep='egrep --color'
 
 # Application aliases.
