@@ -26,6 +26,7 @@
     co = checkout
     cob = checkout -b
     undo = reset --hard HEAD
+    tags = tag --list
     branches = branch --list --all
     opendiff = difftool --tool=opendiff -Y
     incoming = "!git remote update -p; git log ..@{u}"
