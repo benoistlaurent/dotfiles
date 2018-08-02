@@ -3,6 +3,8 @@
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 
+# Change owner.
+alias my='sudo chown `id -u`:`id -g`'
 
 # ls aliases.
 
