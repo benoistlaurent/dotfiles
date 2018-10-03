@@ -38,6 +38,12 @@
     # Same as ls - Shows last commit.
     head = !git ls HEAD^..HEAD
 
+    # Remove local and remote branch.
+    deletebranch = "!f() { \
+        git push origin --delete "$@"; \
+        git branch -d "$@"; \
+    }; f"
+
 [merge]
     tool = opendiff
 
