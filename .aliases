@@ -38,14 +38,17 @@ alias vmd='vmd -size 1000 1000 -nt'
 if [[ 'Darwin' =~ `uname -s` ]]; then
     alias hidedt='defaults write com.apple.finder CreateDesktop false; killall Finder'
     alias showdt='defaults write com.apple.finder CreateDesktop true; killall Finder'
-    alias du='ncdu -x -r --color dark --exclude .git'
     alias umount='diskutil eject'
     alias rstud='open -a RStudio'
     alias skim='open -a Skim'
+    alias du='ncdu -x -r --color dark --exclude .git'
+    alias du1='\du -h -d1'
 # Linux specific aliases.
 else
     alias du='ncdu -x -r --exclude .git'
+    alias du1='\du -h --max-depth=1'
 fi
+
 
 # zsh specific aliases.
 if [[ -n "$ZSH_VERSION" ]]; then
