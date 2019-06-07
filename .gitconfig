@@ -28,7 +28,7 @@
     undo = reset --hard HEAD
     tags = tag --list
     branches = branch --list --all
-    opendiff = difftool --tool=opendiff -Y
+    opendiff = difftool -y --tool=opendiff
     incoming = "!git remote update -p; git log ..@{u}"
     outgoing = "!CB=$(git rev-parse --abbrev-ref HEAD) && git fetch origin && git log origin/$CB..$CB"
    
