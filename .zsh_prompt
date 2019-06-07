@@ -48,15 +48,7 @@ function set_prompt() {
     PROMPT+="\$(git_prompt_info)"
     PROMPT+="
 \$(__prompt_char) "
-
-    RPROMPT='${GREEN}[%*]${COLOR_OFF}'
-    RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
 }
 
 set_prompt
 unset set_prompt
-
-# PROMPT=%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}: %{$fg_bold[blue]%}%~%{$reset_color%}$(git_prompt_info)
-# %_ $(__prompt_char) '
-
-
