@@ -2,6 +2,7 @@
 # cd aliases.
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
+alias dr='cd ~/Dropbox'
 
 # Change owner.
 alias my='sudo chown `id -u`:`id -g`'
