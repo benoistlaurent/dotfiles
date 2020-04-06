@@ -83,3 +83,5 @@ alias gh='git head'
 alias gmv='git mv'
 alias glog='git log'
 
+# Other aliases
+alias rl='readlink -e'
