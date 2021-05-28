@@ -11,12 +11,12 @@ alias my='sudo chown `id -u`:`id -g`'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-    colorflag="--color"
+    lsflags="--color --group-directories-first"
 else # OS X `ls`
-    colorflag="-G"
+    lsflags="-G"
 fi
 
-alias ls="command ls ${colorflag} --group-directories-first"
+alias ls="command ls ${lsflags}"
 alias l='ls -lAh'
 alias ll='ls -lh'
 alias l1='ls -1'
